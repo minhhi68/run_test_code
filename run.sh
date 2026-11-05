@@ -6,7 +6,7 @@ DIR=$(cd "$(dirname "$0")" && pwd)
 
 python3 "$DIR/fake_auth.py" --qps 100 --ttl 1 > /dev/null &
 AUTH=$!
-python3 "$DIR/../resolver.py" --mode "$MODE" --client-window 10 --log > "$DIR/resolver_$MODE.log" &
+python3 "$DIR/resolver.py" --mode "$MODE" --client-window 10 --log > "$DIR/resolver_$MODE.log" &
 RES=$!
 trap 'kill $AUTH $RES 2>/dev/null' EXIT
 sleep 1
