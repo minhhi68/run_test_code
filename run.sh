@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run one wildcard-attack experiment: ./run.sh fifo|priority
+# Run one wildcard-attack experiment: ./run.sh fifo|priority|evict
 set -e
 MODE=${1:-priority}
 DIR=$(cd "$(dirname "$0")" && pwd)

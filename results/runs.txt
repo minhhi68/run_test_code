@@ -1,0 +1,9 @@
+fifo 1 {"legit_popular": {"sent": 796, "success_ratio": 0.24}, "legit_new": {"sent": 204, "success_ratio": 0.044}, "attack": {"sent": 8000, "success_ratio": 0.04}}
+priority 1 {"legit_popular": {"sent": 796, "success_ratio": 0.99}, "legit_new": {"sent": 204, "success_ratio": 0.426}, "attack": {"sent": 8000, "success_ratio": 0.182}}
+evict 1 {"legit_popular": {"sent": 814, "success_ratio": 0.978}, "legit_new": {"sent": 186, "success_ratio": 0.995}, "attack": {"sent": 8000, "success_ratio": 0.177}}
+fifo 2 {"legit_popular": {"sent": 800, "success_ratio": 0.246}, "legit_new": {"sent": 200, "success_ratio": 0.045}, "attack": {"sent": 8000, "success_ratio": 0.039}}
+priority 2 {"legit_popular": {"sent": 798, "success_ratio": 0.986}, "legit_new": {"sent": 202, "success_ratio": 0.371}, "attack": {"sent": 8000, "success_ratio": 0.182}}
+evict 2 {"legit_popular": {"sent": 804, "success_ratio": 0.976}, "legit_new": {"sent": 196, "success_ratio": 0.98}, "attack": {"sent": 8000, "success_ratio": 0.173}}
+fifo 3 {"legit_popular": {"sent": 803, "success_ratio": 0.25}, "legit_new": {"sent": 197, "success_ratio": 0.061}, "attack": {"sent": 8000, "success_ratio": 0.04}}
+priority 3 {"legit_popular": {"sent": 816, "success_ratio": 0.989}, "legit_new": {"sent": 184, "success_ratio": 0.386}, "attack": {"sent": 8000, "success_ratio": 0.181}}
+evict 3 {"legit_popular": {"sent": 806, "success_ratio": 0.985}, "legit_new": {"sent": 194, "success_ratio": 0.964}, "attack": {"sent": 8000, "success_ratio": 0.177}}
