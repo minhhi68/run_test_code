@@ -8,6 +8,8 @@ Modes:
     fifo      baseline: one FIFO queue (behaves like a plain resolver)
     priority  proposed: known names -> high queue, unseen names -> low queue
               (low queue ordered by client history score)
+    evict     priority + when the low queue is full, a higher-score query
+              evicts the lowest-score queued query instead of being rejected
 """
 import argparse
 import asyncio
@@ -122,7 +124,16 @@ class Scheduler:
             self.high.append(item)
         else:
             if len(self.low) >= MAX_QUEUE:
-                return False
+                if self.mode != "evict":
+                    return False
+                worst = max(self.low)          # lowest score, newest
+                if -worst[0] >= score:
+                    return False
+                self.low.remove(worst)
+                heapq.heapify(self.low)
+                fut = worst[2][1]
+                if not fut.done():
+                    fut.set_result(None)       # evicted -> SERVFAIL
             heapq.heappush(self.low, (-score, next(self.seq), item))
         self.ready.set()
         return True
@@ -238,7 +249,7 @@ async def main():
     p = argparse.ArgumentParser()
     p.add_argument("--listen", default="127.0.0.1:5300")
     p.add_argument("--upstream", default="127.0.0.1:5301")
-    p.add_argument("--mode", choices=["fifo", "priority"], default="priority")
+    p.add_argument("--mode", choices=["fifo", "priority", "evict"], default="priority")
     p.add_argument("--client-window", type=float, default=CLIENT_WINDOW,
                    help="client score window in seconds (shorten for tests)")
     p.add_argument("--log", action="store_true")
