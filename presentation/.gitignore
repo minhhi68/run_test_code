@@ -1,0 +1,6 @@
+# build artifacts from gen.py / rendering
+build/
+src/
+*.jpg
+*.pdf
+5th_report_2026.11.17.pptx
